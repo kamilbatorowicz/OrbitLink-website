@@ -44,6 +44,7 @@ export default function Footer() {
                     <div className="lg:col-span-2 flex flex-col gap-4">
                         <h4 className="text-white font-medium mb-2">Company</h4>
                         <ul className="flex flex-col gap-3">
+                            <li><Link to="/services" className="text-white/40 hover:text-white transition-colors text-sm">Services</Link></li>
                             <li><Link to="/about" className="text-white/40 hover:text-white transition-colors text-sm">About Us</Link></li>
                             <li><Link to="/missions" className="text-white/40 hover:text-white transition-colors text-sm">Missions</Link></li>
                             <li><Link to="/contact" className="text-white/40 hover:text-white transition-colors text-sm">Contact</Link></li>
