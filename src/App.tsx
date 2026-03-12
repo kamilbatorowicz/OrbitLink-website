@@ -179,17 +179,19 @@ export default function App() {
             <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-white mb-10">
               Infrastructure that spans <br className="hidden md:block" /> the{" "}
               <span className="relative inline-block">
-                <span className="relative z-10 text-cyan-400 inline-flex">
+                <span className="relative z-10 text-cyan-400 inline-flex items-baseline whitespace-pre">
                   {"entire globe.".split("").map((char, index) => (
                     <motion.span
                       key={index}
-                      initial={{ opacity: 0 }}
-                      whileInView={{ opacity: 1 }}
+                      initial={{ opacity: 0, y: 10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
                       transition={{
-                        duration: 0.05,
-                        delay: index * 0.1,
+                        duration: 0.2,
+                        delay: index * 0.08,
+                        ease: "easeOut"
                       }}
                       viewport={{ once: true }}
+                      className="inline-block"
                     >
                       {char}
                     </motion.span>
@@ -198,7 +200,7 @@ export default function App() {
                 <motion.span
                   initial={{ scaleX: 0 }}
                   whileInView={{ scaleX: 1 }}
-                  transition={{ duration: 1, delay: 1.5 }}
+                  transition={{ duration: 1, delay: 1.2 }}
                   viewport={{ once: true }}
                   className="absolute -bottom-1 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-cyan-400/80 to-transparent origin-left"
                 ></motion.span>
