@@ -114,7 +114,7 @@ function SatelliteScroller() {
 
       const tl = gsap.timeline({ paused: true, defaults: { ease: "power2.inOut" } });
       
-      tl.to(sat, { top: "50%", duration: 1.0, ease: "none" }, 0.0);
+      tl.to(sat, { top: "43%", duration: 1.0, ease: "none" }, 0.0);
       tl.to(sat, { left: getLeft(false), duration: 0.5 }, 1.25);
       tl.to(sat, { left: getLeft(true), duration: 0.5 }, 2.25);
       tl.to(sat, { left: getLeft(false), duration: 0.5 }, 3.25);
@@ -138,7 +138,7 @@ function SatelliteScroller() {
 
       const tl = gsap.timeline({ paused: true, defaults: { ease: "none" } });
       
-      tl.to(sat, { top: "50%", duration: 1.0 }, 0.0);
+      tl.to(sat, { top: "43%", duration: 1.0 }, 0.0);
       tl.to(sat, { top: "-20%", duration: 1.0 }, 4.0);
 
       ScrollTrigger.create({
