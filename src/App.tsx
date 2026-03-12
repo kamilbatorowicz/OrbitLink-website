@@ -55,7 +55,7 @@ export default function App() {
   const opacityInfraText = useTransform(infraScrollProgress, [0.3, 1], [0, 1]);
 
   const videoRef = useRef<HTMLVideoElement>(null);
-  const videoUrl = "/satelita.mp4";
+  const videoUrl = `${import.meta.env.BASE_URL}satelita.mp4`;
 
   useEffect(() => {
     if (videoRef.current) {
@@ -325,7 +325,7 @@ export default function App() {
             {/* Background Image Setup */}
             <div className="absolute inset-0 z-0 bg-black">
               <motion.img
-                src="/satelita_zdjecie.jpg"
+                src={`${import.meta.env.BASE_URL}satelita_zdjecie.jpg`}
                 alt="Satellite Orbit"
                 initial={{ scale: 1.1 }}
                 whileInView={{ scale: 1.0 }}

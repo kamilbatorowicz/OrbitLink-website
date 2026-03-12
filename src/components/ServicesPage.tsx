@@ -177,7 +177,7 @@ function SatelliteScroller() {
           }}
         >
           <img
-            src="/satellite.png"
+            src={`${import.meta.env.BASE_URL}satellite.png`}
             alt="OrbitLink satellite"
             style={{ width: "80vw", maxWidth: "580px", minWidth: "240px", display: "block",
               filter: "drop-shadow(0 0 35px rgba(34,211,238,0.4))" }}
@@ -215,7 +215,7 @@ export default function ServicesPage() {
           <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10" />
           <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black opacity-60 z-10" />
           <img 
-            src="/services_hero_bg.jpg" 
+            src={`${import.meta.env.BASE_URL}services_hero_bg.jpg`} 
             alt="Space Background" 
             className="w-full h-full object-cover object-top opacity-80 block"
           />
@@ -360,7 +360,7 @@ export default function ServicesPage() {
 
               {/* satellite image */}
               <motion.img
-                src="/satellite.png"
+                src={`${import.meta.env.BASE_URL}satellite.png`}
                 alt="OrbitLink satellite"
                 animate={{ y: [-8, 8, -8], rotate: [-3, 3, -3] }}
                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}

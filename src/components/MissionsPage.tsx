@@ -12,7 +12,7 @@ export default function MissionsPage() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10" />
                 <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black opacity-80 z-10" />
                 <img
-                    src="/services_hero_bg.jpg"
+                    src={`${import.meta.env.BASE_URL}services_hero_bg.jpg`}
                     alt="Space Background"
                     className="w-full h-full object-cover object-center opacity-70 block"
                 />
@@ -158,7 +158,7 @@ export default function MissionsPage() {
                         <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-10 rounded-2xl pointer-events-none" />
                         
                         <img 
-                            src="/mission_1.jpg" 
+                            src={`${import.meta.env.BASE_URL}mission_1.jpg`} 
                             alt="Earth Observation Satellite" 
                             className="w-full h-full object-cover rounded-2xl relative z-10 shadow-2xl grayscale-[20%] group-hover:grayscale-0 transition-all duration-700"
                         />
@@ -275,7 +275,7 @@ export default function MissionsPage() {
                         <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-blue-400 z-20 rounded-bl-2xl" />
                         
                         <img 
-                            src="/mission_2.jpg" 
+                            src={`${import.meta.env.BASE_URL}mission_2.jpg`} 
                             alt="Space Station Resupply" 
                             className="w-full h-full object-cover rounded-2xl relative z-10 shadow-2xl brightness-90 group-hover:brightness-110 transition-all duration-700"
                         />

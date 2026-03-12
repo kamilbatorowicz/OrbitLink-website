@@ -23,10 +23,10 @@ const values = [
 ];
 
 const team = [
-    { name: "Dr. Amara Osei", role: "CEO & Co-founder", initials: "AO", photo: "/team_amara.png", gradient: "linear-gradient(160deg, #0d1b2a 0%, #0e3352 100%)", accent: "#22d3ee" },
-    { name: "Ivan Petrov", role: "CTO, RF Systems", initials: "IP", photo: "/team_ivan.png", gradient: "linear-gradient(160deg, #0a1128 0%, #1a2060 100%)", accent: "#22d3ee" },
-    { name: "Yuki Sato", role: "Head of Orbital Ops", initials: "YS", photo: "/team_yuki.png", gradient: "linear-gradient(160deg, #0d1f2d 0%, #0c3050 100%)", accent: "#22d3ee" },
-    { name: "Laila Mansour", role: "VP Engineering", initials: "LM", photo: "/team_laila.png", gradient: "linear-gradient(160deg, #150d2a 0%, #2d1060 100%)", accent: "#22d3ee" },
+    { name: "Dr. Amara Osei", role: "CEO & Co-founder", initials: "AO", photo: `${import.meta.env.BASE_URL}team_amara.png`, gradient: "linear-gradient(160deg, #0d1b2a 0%, #0e3352 100%)", accent: "#22d3ee" },
+    { name: "Ivan Petrov", role: "CTO, RF Systems", initials: "IP", photo: `${import.meta.env.BASE_URL}team_ivan.png`, gradient: "linear-gradient(160deg, #0a1128 0%, #1a2060 100%)", accent: "#22d3ee" },
+    { name: "Yuki Sato", role: "Head of Orbital Ops", initials: "YS", photo: `${import.meta.env.BASE_URL}team_yuki.png`, gradient: "linear-gradient(160deg, #0d1f2d 0%, #0c3050 100%)", accent: "#22d3ee" },
+    { name: "Laila Mansour", role: "VP Engineering", initials: "LM", photo: `${import.meta.env.BASE_URL}team_laila.png`, gradient: "linear-gradient(160deg, #150d2a 0%, #2d1060 100%)", accent: "#22d3ee" },
 ];
 
 function TeamSection() {
@@ -176,7 +176,7 @@ export default function AboutPage() {
                     >
                         <div className="relative rounded-3xl overflow-hidden min-h-[520px] h-full">
                             <img
-                                src="/about_hero.png"
+                                src={`${import.meta.env.BASE_URL}about_hero.png`}
                                 alt="OrbitLink mission control"
                                 className="w-full h-full object-cover"
                             />
