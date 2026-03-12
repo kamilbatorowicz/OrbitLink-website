@@ -179,27 +179,15 @@ export default function App() {
             <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-white mb-10">
               Infrastructure that spans <br className="hidden md:block" /> the{" "}
               <span className="relative inline-block text-white">
-                <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-white via-neutral-400 to-white inline-flex min-w-[220px]">
-                  {"entire globe.".split("").map((char, index) => (
-                    <motion.span
-                      key={index}
-                      animate={{
-                        opacity: [0, 1, 1, 0, 0],
-                      }}
-                      transition={{
-                        duration: 8, // Cykl trwa 8 sekund
-                        repeat: Infinity,
-                        times: [0, 0.05, 0.85, 0.9, 1], // Pokazuje się do 5%, trzyma tekst od 5% do 85% czasu (bardzo długo!), zanika krótko, i czeka chwilę na reset
-                        delay: index * 0.1,
-                        ease: "linear"
-                      }}
-                      className={char === " " ? "w-3" : ""}
-                    >
-                      {char}
-                    </motion.span>
-                  ))}
+                <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-200 to-white inline-flex min-w-[220px]">
+                  entire globe.
                 </span>
-                <span className="absolute -bottom-1 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-cyan-400/80 to-transparent"></span>
+                <motion.span 
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  transition={{ duration: 1, delay: 0.5 }}
+                  className="absolute -bottom-1 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-cyan-400/80 to-transparent origin-left"
+                ></motion.span>
               </span>
             </h2>
             <p className="max-w-2xl mx-auto text-white/50 text-lg md:text-xl font-light">
