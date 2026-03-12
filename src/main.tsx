@@ -1,6 +1,6 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { HashRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import App from './App.tsx';
 import AboutPage from './components/AboutPage.tsx';
 import ContactPage from './components/ContactPage.tsx';
@@ -12,9 +12,12 @@ import MissionsPage from './components/MissionsPage.tsx';
 import Layout from './components/Layout.tsx';
 import './index.css';
 
+// Ensure basename handles trailing slash correctly (Vite BASE_URL usually has one)
+const basename = import.meta.env.BASE_URL.replace(/\/$/, "");
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <HashRouter>
+    <BrowserRouter basename={basename}>
       <Layout>
         <Routes>
           <Route path="/" element={<App />} />
@@ -25,8 +28,10 @@ createRoot(document.getElementById('root')!).render(
           <Route path="/privacy" element={<PrivacyPage />} />
           <Route path="/cookies" element={<CookiePage />} />
           <Route path="/terms" element={<TermsPage />} />
+          {/* Catch-all route to redirect back to home if something goes wrong */}
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </Layout>
-    </HashRouter>
+    </BrowserRouter>
   </StrictMode>,
 );
