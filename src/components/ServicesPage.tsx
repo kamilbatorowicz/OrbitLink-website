@@ -352,21 +352,21 @@ export default function ServicesPage() {
               <motion.div
                 animate={{ y: [-6, 6, -6] }}
                 transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute top-4 right-6 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl px-3 py-2 text-xs font-semibold text-white/70"
+                className="absolute top-0 md:top-4 right-0 md:right-6 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl px-3 py-2 text-[10px] md:text-xs font-semibold text-white/70"
               >
                 🌍 Global LEO Network
               </motion.div>
               <motion.div
                 animate={{ y: [5, -5, 5] }}
                 transition={{ duration: 3.8, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute bottom-8 right-4 bg-cyan-400/10 border border-cyan-400/20 rounded-xl px-3 py-2 text-xs font-semibold text-cyan-300"
+                className="absolute bottom-4 md:bottom-8 right-0 md:right-4 bg-cyan-400/10 border border-cyan-400/20 rounded-xl px-3 py-2 text-[10px] md:text-xs font-semibold text-cyan-300"
               >
                 ⚡ &lt;20ms latency
               </motion.div>
               <motion.div
                 animate={{ y: [-5, 5, -5] }}
                 transition={{ duration: 4.2, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute top-12 left-2 bg-blue-500/10 border border-blue-400/20 rounded-xl px-3 py-2 text-xs font-semibold text-blue-300"
+                className="absolute top-24 md:top-12 left-[-10px] md:left-2 bg-blue-500/10 border border-blue-400/20 rounded-xl px-3 py-2 text-[10px] md:text-xs font-semibold text-blue-300"
               >
                 🛰 648 Satellites
               </motion.div>
