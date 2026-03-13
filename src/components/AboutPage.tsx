@@ -54,64 +54,69 @@ function TeamSection() {
                 </p>
             </motion.div>
 
-            {/* Accordion cards row — centered */}
-            <div className="flex gap-4 h-[480px] justify-center">
-                {team.map((member, i) => (
-                    <motion.div
-                        key={member.name}
-                        className="relative rounded-3xl overflow-hidden cursor-pointer flex-shrink-0"
-                        animate={{
-                            width: activeIdx === i ? 460 : 240,
-                        }}
-                        transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
-                        onHoverStart={() => setHovered(i)}
-                        onHoverEnd={() => setHovered(null)}
-                        onClick={() => setSelected(i)}
-                    >
-                        {/* Photo background */}
-                        <img
-                            src={member.photo}
-                            alt={member.name}
-                            className="absolute inset-0 w-full h-full object-cover object-top"
-                        />
-
-                        {/* Bottom gradient overlay */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
-
-                        {/* Monogram — visible when collapsed */}
+            {/* Accordion cards row — responsive stacking on mobile */}
+            <div className="flex flex-col md:flex-row gap-4 h-auto md:h-[480px] justify-center items-center">
+                {team.map((member, i) => {
+                    const isActive = activeIdx === i;
+                    
+                    return (
                         <motion.div
-                            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-3xl font-bold pointer-events-none"
-                            style={{ color: member.accent }}
-                            animate={{ opacity: activeIdx === i ? 0 : 1, scale: activeIdx === i ? 0.8 : 1 }}
-                            transition={{ duration: 0.3 }}
+                            key={member.name}
+                            className="relative rounded-3xl overflow-hidden cursor-pointer w-full md:flex-shrink-0"
+                            animate={{
+                                width: typeof window !== 'undefined' && window.innerWidth < 768 ? "100%" : (isActive ? 460 : 240),
+                                height: typeof window !== 'undefined' && window.innerWidth < 768 ? 320 : "100%",
+                            }}
+                            transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
+                            onHoverStart={() => setHovered(i)}
+                            onHoverEnd={() => setHovered(null)}
+                            onClick={() => setSelected(i)}
                         >
-                            {member.initials}
-                        </motion.div>
+                            {/* Photo background */}
+                            <img
+                                src={member.photo}
+                                alt={member.name}
+                                className="absolute inset-0 w-full h-full object-cover object-top"
+                            />
 
-                        {/* Name + role — revealed on expand */}
-                        <motion.div
-                            className="absolute bottom-7 left-6 right-6 pointer-events-none"
-                            animate={{ opacity: activeIdx === i ? 1 : 0, y: activeIdx === i ? 0 : 10 }}
-                            transition={{ duration: 0.3, delay: activeIdx === i ? 0.15 : 0 }}
-                        >
-                            <div
-                                className="text-xs font-bold uppercase tracking-widest mb-1.5"
+                            {/* Bottom gradient overlay */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+
+                            {/* Monogram — visible when collapsed */}
+                            <motion.div
+                                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-3xl font-bold pointer-events-none"
                                 style={{ color: member.accent }}
+                                animate={{ opacity: isActive ? 0 : 1, scale: isActive ? 0.8 : 1 }}
+                                transition={{ duration: 0.3 }}
                             >
-                                {member.role}
-                            </div>
-                            <div className="text-white font-semibold text-xl leading-tight">
-                                {member.name}
-                            </div>
-                        </motion.div>
+                                {member.initials}
+                            </motion.div>
 
-                        {/* Bottom accent line */}
-                        <div
-                            className="absolute bottom-0 left-0 right-0 h-[3px]"
-                            style={{ background: `linear-gradient(90deg, transparent, ${member.accent}, transparent)` }}
-                        />
-                    </motion.div>
-                ))}
+                            {/* Name + role — revealed on expand */}
+                            <motion.div
+                                className="absolute bottom-7 left-6 right-6 pointer-events-none"
+                                animate={{ opacity: isActive ? 1 : 0, y: isActive ? 0 : 10 }}
+                                transition={{ duration: 0.3, delay: isActive ? 0.15 : 0 }}
+                            >
+                                <div
+                                    className="text-xs font-bold uppercase tracking-widest mb-1.5"
+                                    style={{ color: member.accent }}
+                                >
+                                    {member.role}
+                                </div>
+                                <div className="text-white font-semibold text-xl leading-tight">
+                                    {member.name}
+                                </div>
+                            </motion.div>
+
+                            {/* Bottom accent line */}
+                            <div
+                                className="absolute bottom-0 left-0 right-0 h-[3px]"
+                                style={{ background: `linear-gradient(90deg, transparent, ${member.accent}, transparent)` }}
+                            />
+                        </motion.div>
+                    );
+                })}
             </div>
 
             {/* Arrow navigation */}

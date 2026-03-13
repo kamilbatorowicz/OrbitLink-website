@@ -173,7 +173,10 @@ export default function App() {
         </div>
         <div className="max-w-7xl mx-auto w-full relative z-10">
           <motion.div
-            style={{ y: yInfraText, opacity: opacityInfraText }}
+            style={{ 
+              y: yInfraText, 
+              opacity: typeof window !== 'undefined' && window.innerWidth < 768 ? 1 : opacityInfraText 
+            }}
             className="text-center mb-16 md:mb-20"
           >
             <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-white mb-10">
@@ -214,7 +217,7 @@ export default function App() {
                 ></motion.span>
               </span>
             </h2>
-            <p className="max-w-2xl mx-auto text-white md:text-white/95 text-lg md:text-xl font-light leading-relaxed px-4">
+            <p className="max-w-2xl mx-auto text-white md:text-white/95 text-lg md:text-xl font-light leading-relaxed px-4 opacity-100">
               Our constellation of low-earth orbit satellites provides unparalleled bandwidth and reliability, seamlessly bridging the gap between continents.
             </p>
           </motion.div>
@@ -433,22 +436,22 @@ export default function App() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 0.35 }}
-                  className="grid grid-cols-2 gap-2 md:gap-4"
+                  className="grid grid-cols-2 gap-2 md:gap-4 mt-8 w-full max-w-sm mx-auto lg:mx-0 lg:flex"
                 >
                   <Link to="/contact" className="w-full lg:w-auto">
                     <motion.button
                       whileHover={{ scale: 1.04, y: -2 }}
                       whileTap={{ scale: 0.97 }}
-                      className="w-full bg-white text-black px-4 md:px-10 py-3.5 md:py-4 rounded-full text-sm md:text-base font-bold flex items-center justify-center gap-2 drop-shadow-[0_0_20px_rgba(255,255,255,0.3)] whitespace-nowrap"
+                      className="w-full bg-white text-black px-4 md:px-10 py-3.5 md:py-4 rounded-full text-[13px] md:text-base font-bold flex items-center justify-center gap-1.5 md:gap-2 drop-shadow-[0_0_20px_rgba(255,255,255,0.3)] whitespace-nowrap"
                     >
-                      Explore <ArrowRight className="w-4 h-4 hidden sm:block" />
+                      Explore <ArrowRight className="w-3.5 h-3.5 md:w-4 md:h-4 hidden sm:block" />
                     </motion.button>
                   </Link>
                   <Link to="/contact" className="w-full lg:w-auto">
                     <motion.button
                       whileHover={{ scale: 1.04, y: -2 }}
                       whileTap={{ scale: 0.97 }}
-                      className="w-full px-4 md:px-10 py-3.5 md:py-4 rounded-full text-sm md:text-base font-bold border border-white/20 hover:bg-white/10 transition-all bg-[#0a0a0a]/50 backdrop-blur-md text-white text-center whitespace-nowrap"
+                      className="w-full px-4 md:px-10 py-3.5 md:py-4 rounded-full text-[13px] md:text-base font-bold border border-white/20 hover:bg-white/10 transition-all bg-[#0a0a0a]/50 backdrop-blur-md text-white text-center whitespace-nowrap"
                     >
                       Contact
                     </motion.button>
