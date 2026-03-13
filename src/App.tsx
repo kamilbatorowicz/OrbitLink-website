@@ -52,7 +52,7 @@ export default function App() {
   });
 
   const yInfraText = useTransform(infraScrollProgress, [0, 1], [100, 0]);
-  const opacityInfraText = useTransform(infraScrollProgress, [0.3, 1], [0, 1]);
+  const opacityInfraText = useTransform(infraScrollProgress, [0, 0.35], [0, 1]);
 
   const videoRef = useRef<HTMLVideoElement>(null);
   const videoUrl = `${import.meta.env.BASE_URL}satelita.mp4`;
@@ -214,7 +214,7 @@ export default function App() {
                 ></motion.span>
               </span>
             </h2>
-            <p className="max-w-2xl mx-auto text-white/95 text-lg md:text-xl font-light leading-relaxed px-4">
+            <p className="max-w-2xl mx-auto text-white md:text-white/95 text-lg md:text-xl font-light leading-relaxed px-4">
               Our constellation of low-earth orbit satellites provides unparalleled bandwidth and reliability, seamlessly bridging the gap between continents.
             </p>
           </motion.div>
@@ -433,7 +433,7 @@ export default function App() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 0.35 }}
-                  className="grid grid-cols-2 lg:flex gap-3 md:gap-4"
+                  className="grid grid-cols-2 gap-2 md:gap-4"
                 >
                   <Link to="/contact" className="w-full lg:w-auto">
                     <motion.button
@@ -474,34 +474,6 @@ export default function App() {
           {/* Static Horizontal Blue/Cyan Mist Streak (More Visible) */}
           <div className="absolute top-[40%] left-0 w-[150%] -translate-x-1/4 h-[30px] bg-gradient-to-r from-transparent via-cyan-400/30 to-transparent blur-[30px] rotate-[-2deg]" />
           <div className="absolute top-[40%] left-0 w-[150%] -translate-x-1/4 h-[8px] bg-gradient-to-r from-transparent via-blue-400/40 to-transparent blur-[8px] rotate-[-2deg]" />
-
-          {/* Animated Shooting Satellites — adjusted heights for mobile globe alignment */}
-          {/* Satellite 1 */}
-          <motion.div
-            animate={{ x: ['-50vw', '150vw'], opacity: [0, 1, 1, 0] }}
-            transition={{ duration: 12, repeat: Infinity, ease: "linear", repeatDelay: 15 }}
-            className="absolute top-[65%] md:top-[38%] left-0 h-[2px] w-[60px] bg-gradient-to-r from-transparent via-white to-transparent rotate-[-2deg] drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]"
-          >
-            <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[4px] h-[4px] bg-white rounded-full blur-[1px]"></div>
-          </motion.div>
-
-          {/* Satellite 2 */}
-          <motion.div
-            animate={{ x: ['-50vw', '150vw'], opacity: [0, 1, 1, 0] }}
-            transition={{ duration: 13, repeat: Infinity, ease: "linear", repeatDelay: 15, delay: 9 }}
-            className="absolute top-[75%] md:top-[48%] left-0 h-[2px] w-[60px] bg-gradient-to-r from-transparent via-white to-transparent rotate-[-2deg] drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]"
-          >
-            <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[4px] h-[4px] bg-white rounded-full blur-[1px]"></div>
-          </motion.div>
-
-          {/* Satellite 3 */}
-          <motion.div
-            animate={{ x: ['-50vw', '150vw'], opacity: [0, 1, 1, 0] }}
-            transition={{ duration: 11, repeat: Infinity, ease: "linear", repeatDelay: 18, delay: 18 }}
-            className="absolute top-[80%] md:top-[58%] left-0 h-[2px] w-[60px] bg-gradient-to-r from-transparent via-white to-transparent rotate-[-2deg] drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]"
-          >
-            <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[4px] h-[4px] bg-white rounded-full blur-[1px]"></div>
-          </motion.div>
 
           {/* Subtle gradient overlay to blend edges */}
           <div className="absolute inset-0 bg-gradient-to-b from-[#020202] via-transparent to-[#020202] opacity-80" />
