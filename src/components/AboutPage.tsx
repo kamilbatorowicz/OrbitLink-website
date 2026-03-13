@@ -268,7 +268,7 @@ export default function AboutPage() {
                         </div>
                     </motion.div>
                 </div>
-            </section>
+            </div>
 
             {/* Team Section */}
             <section className="py-20 px-6 md:px-12 border-t border-white/5">
