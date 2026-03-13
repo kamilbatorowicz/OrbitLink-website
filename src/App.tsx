@@ -86,7 +86,7 @@ export default function App() {
       </div>
 
       {/* Hero Section - Vertically Centered Content */}
-      <main className="relative z-10 flex items-center min-h-screen px-6 md:px-12">
+      <main className="relative z-10 flex items-center min-h-screen pt-28 pb-20 md:py-0 px-6 md:px-12">
         <div className="max-w-7xl mx-auto w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
@@ -139,17 +139,17 @@ export default function App() {
                 </div>
               </div>
 
-              {/* Buttons - Positioned at the bottom */}
-              <div className="flex flex-wrap gap-4 pt-4 relative z-10">
-                <Link to="/services">
-                  <button className="bg-white text-black px-10 py-4 rounded-full font-bold flex items-center gap-2 hover:bg-white/90 transition-all group shadow-[0_0_25px_rgba(255,255,255,0.15)] hover:shadow-[0_0_30px_rgba(34,211,238,0.25)]">
-                    Explore Services
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              {/* Buttons - Adjusted for single line on mobile */}
+              <div className="grid grid-cols-2 lg:flex gap-3 md:gap-4 pt-4 w-full relative z-10">
+                <Link to="/services" className="w-full lg:w-auto">
+                  <button className="w-full bg-white text-black px-4 md:px-10 py-3.5 md:py-4 rounded-full text-sm md:text-base font-bold flex items-center justify-center gap-2 hover:bg-white/90 transition-all group shadow-[0_0_25px_rgba(255,255,255,0.15)] hover:shadow-[0_0_30px_rgba(34,211,238,0.25)] whitespace-nowrap">
+                    Explore
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform hidden sm:block" />
                   </button>
                 </Link>
-                <Link to="/missions">
-                  <button className="px-10 py-4 rounded-full font-bold border border-white/20 backdrop-blur-md hover:bg-white/10 hover:border-cyan-400/50 hover:text-white transition-all text-white/80">
-                    Our Missions
+                <Link to="/missions" className="w-full lg:w-auto">
+                  <button className="w-full bg-black/40 backdrop-blur-md text-white border border-white/20 px-4 md:px-10 py-3.5 md:py-4 rounded-full text-sm md:text-base font-bold hover:bg-white/10 transition-all text-center whitespace-nowrap">
+                    Missions
                   </button>
                 </Link>
               </div>
