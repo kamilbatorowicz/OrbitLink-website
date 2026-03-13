@@ -238,7 +238,7 @@ export default function AboutPage() {
                                     From Above
                                 </span>
                             </h1>
-                            <p className="text-white/50 text-lg font-light leading-relaxed">
+                            <p className="text-white/80 md:text-white/50 text-lg font-light leading-relaxed">
                                 OrbitLink isn't just a satellite network — it's the backbone of a connected planet.
                                 We believe that access to reliable, high-speed connectivity is a fundamental right,
                                 not a privilege tied to geography. Our constellation makes that belief a reality.

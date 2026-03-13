@@ -237,7 +237,7 @@ export default function ServicesPage() {
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-blue-400">built for scale</span>
           </h1>
           <div className="w-20 h-[2px] bg-gradient-to-r from-cyan-400 to-blue-500 mx-auto mb-6 shadow-[0_0_10px_rgba(34,211,238,0.5)]" />
-          <p className="text-white/60 text-lg md:text-xl font-light leading-relaxed max-w-2xl mx-auto drop-shadow-md mb-12">
+          <p className="text-white/80 md:text-white/60 text-lg md:text-xl font-light leading-relaxed max-w-2xl mx-auto drop-shadow-md mb-12">
             From broadband for the most remote corners of Earth to enterprise-grade private networks.
             OrbitLink delivers the infrastructure that powers next-generation connectivity.
           </p>
