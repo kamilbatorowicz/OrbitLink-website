@@ -197,7 +197,7 @@ export default function AboutPage() {
                         initial={{ opacity: 0, x: -40 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8, ease: "easeOut" }}
-                        className="relative"
+                        className="relative order-last lg:order-none"
                     >
                         <div className="relative rounded-3xl overflow-hidden min-h-[520px] h-full">
                             <img
@@ -245,7 +245,7 @@ export default function AboutPage() {
                         initial={{ opacity: 0, x: 40 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
-                        className="flex flex-col gap-8"
+                        className="flex flex-col gap-8 order-first lg:order-none"
                     >
                         <div>
                             <motion.div
