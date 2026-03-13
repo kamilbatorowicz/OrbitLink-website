@@ -214,7 +214,7 @@ export default function App() {
                 ></motion.span>
               </span>
             </h2>
-            <p className="max-w-2xl mx-auto text-white/80 text-lg md:text-xl font-light">
+            <p className="max-w-2xl mx-auto text-white/95 text-lg md:text-xl font-light leading-relaxed px-4">
               Our constellation of low-earth orbit satellites provides unparalleled bandwidth and reliability, seamlessly bridging the gap between continents.
             </p>
           </motion.div>
@@ -433,24 +433,24 @@ export default function App() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 0.35 }}
-                  className="flex flex-wrap gap-4"
+                  className="grid grid-cols-2 lg:flex gap-3 md:gap-4"
                 >
-                  <Link to="/contact">
+                  <Link to="/contact" className="w-full lg:w-auto">
                     <motion.button
                       whileHover={{ scale: 1.04, y: -2 }}
                       whileTap={{ scale: 0.97 }}
-                      className="bg-white text-black px-10 py-4 rounded-full font-bold flex items-center gap-2 drop-shadow-[0_0_20px_rgba(255,255,255,0.3)]"
+                      className="w-full bg-white text-black px-4 md:px-10 py-3.5 md:py-4 rounded-full text-sm md:text-base font-bold flex items-center justify-center gap-2 drop-shadow-[0_0_20px_rgba(255,255,255,0.3)] whitespace-nowrap"
                     >
-                      Get Started <ArrowRight className="w-4 h-4" />
+                      Explore <ArrowRight className="w-4 h-4 hidden sm:block" />
                     </motion.button>
                   </Link>
-                  <Link to="/contact">
+                  <Link to="/contact" className="w-full lg:w-auto">
                     <motion.button
                       whileHover={{ scale: 1.04, y: -2 }}
                       whileTap={{ scale: 0.97 }}
-                      className="px-10 py-4 rounded-full font-bold border border-white/20 hover:bg-white/10 transition-all bg-[#0a0a0a]/50 backdrop-blur-md text-white"
+                      className="w-full px-4 md:px-10 py-3.5 md:py-4 rounded-full text-sm md:text-base font-bold border border-white/20 hover:bg-white/10 transition-all bg-[#0a0a0a]/50 backdrop-blur-md text-white text-center whitespace-nowrap"
                     >
-                      Contact Sales
+                      Contact
                     </motion.button>
                   </Link>
                 </motion.div>
@@ -475,12 +475,12 @@ export default function App() {
           <div className="absolute top-[40%] left-0 w-[150%] -translate-x-1/4 h-[30px] bg-gradient-to-r from-transparent via-cyan-400/30 to-transparent blur-[30px] rotate-[-2deg]" />
           <div className="absolute top-[40%] left-0 w-[150%] -translate-x-1/4 h-[8px] bg-gradient-to-r from-transparent via-blue-400/40 to-transparent blur-[8px] rotate-[-2deg]" />
 
-          {/* Animated Shooting Satellites — 3 at different heights and delays */}
+          {/* Animated Shooting Satellites — adjusted heights for mobile globe alignment */}
           {/* Satellite 1 */}
           <motion.div
             animate={{ x: ['-50vw', '150vw'], opacity: [0, 1, 1, 0] }}
             transition={{ duration: 12, repeat: Infinity, ease: "linear", repeatDelay: 15 }}
-            className="absolute top-[38%] left-0 h-[2px] w-[60px] bg-gradient-to-r from-transparent via-white to-transparent rotate-[-2deg] drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]"
+            className="absolute top-[65%] md:top-[38%] left-0 h-[2px] w-[60px] bg-gradient-to-r from-transparent via-white to-transparent rotate-[-2deg] drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]"
           >
             <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[4px] h-[4px] bg-white rounded-full blur-[1px]"></div>
           </motion.div>
@@ -489,7 +489,7 @@ export default function App() {
           <motion.div
             animate={{ x: ['-50vw', '150vw'], opacity: [0, 1, 1, 0] }}
             transition={{ duration: 13, repeat: Infinity, ease: "linear", repeatDelay: 15, delay: 9 }}
-            className="absolute top-[48%] left-0 h-[2px] w-[60px] bg-gradient-to-r from-transparent via-white to-transparent rotate-[-2deg] drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]"
+            className="absolute top-[75%] md:top-[48%] left-0 h-[2px] w-[60px] bg-gradient-to-r from-transparent via-white to-transparent rotate-[-2deg] drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]"
           >
             <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[4px] h-[4px] bg-white rounded-full blur-[1px]"></div>
           </motion.div>
@@ -498,7 +498,7 @@ export default function App() {
           <motion.div
             animate={{ x: ['-50vw', '150vw'], opacity: [0, 1, 1, 0] }}
             transition={{ duration: 11, repeat: Infinity, ease: "linear", repeatDelay: 18, delay: 18 }}
-            className="absolute top-[43%] left-0 h-[2px] w-[60px] bg-gradient-to-r from-transparent via-white to-transparent rotate-[-2deg] drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]"
+            className="absolute top-[80%] md:top-[58%] left-0 h-[2px] w-[60px] bg-gradient-to-r from-transparent via-white to-transparent rotate-[-2deg] drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]"
           >
             <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[4px] h-[4px] bg-white rounded-full blur-[1px]"></div>
           </motion.div>
