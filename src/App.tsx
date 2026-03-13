@@ -470,9 +470,13 @@ export default function App() {
           {/* Subtle tech grid */}
           <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:3rem_3rem] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,black_10%,transparent_100%)]"></div>
 
-          {/* Glowing blue/cyan orbs for depth */}
-          <div className="absolute top-[20%] right-[-10%] w-[40%] h-[60%] bg-blue-500/20 blur-[150px] rounded-full"></div>
-          <div className="absolute bottom-[-20%] left-[-10%] w-[50%] h-[50%] bg-cyan-500/20 blur-[120px] rounded-full"></div>
+          {/* Glowing blue/cyan orbs for depth — enhanced for mobile */}
+          <div className="absolute top-[20%] right-[-10%] w-[40%] h-[60%] bg-blue-500/20 blur-[150px] rounded-full hidden md:block"></div>
+          <div className="absolute bottom-[-20%] left-[-10%] w-[50%] h-[50%] bg-cyan-500/20 blur-[120px] rounded-full hidden md:block"></div>
+          
+          {/* Mobile-specific center glows */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120vw] h-[60vh] bg-blue-600/15 blur-[120px] rounded-full md:hidden"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[40vh] bg-cyan-500/10 blur-[80px] rounded-full md:hidden"></div>
 
           {/* Static Horizontal Blue/Cyan Mist Streak (More Visible) */}
           <div className="absolute top-[40%] left-0 w-[150%] -translate-x-1/4 h-[30px] bg-gradient-to-r from-transparent via-cyan-400/30 to-transparent blur-[30px] rotate-[-2deg]" />
@@ -530,7 +534,34 @@ export default function App() {
               {/* Radial gradient behind the globe for depth */}
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.08)_0%,transparent_60%)] pointer-events-none"></div>
 
-              <CobeGlobe />
+               <CobeGlobe />
+               
+               {/* Animated Shooting Satellites (Rockets) — re-added and ensured visibility */}
+               <div className="absolute inset-0 pointer-events-none z-20 overflow-visible">
+                 <motion.div
+                   animate={{ x: ['-20%', '120%'], opacity: [0, 1, 1, 0] }}
+                   transition={{ duration: 7, repeat: Infinity, ease: "linear", repeatDelay: 5 }}
+                   className="absolute top-[30%] left-0 h-[2px] w-[50px] bg-gradient-to-r from-transparent via-blue-400 to-transparent rotate-[-15deg] drop-shadow-[0_0_8px_rgba(34,211,238,0.8)]"
+                 >
+                   <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[4px] h-[4px] bg-white rounded-full blur-[1px]"></div>
+                 </motion.div>
+                 
+                 <motion.div
+                   animate={{ x: ['-20%', '120%'], opacity: [0, 1, 1, 0] }}
+                   transition={{ duration: 9, repeat: Infinity, ease: "linear", repeatDelay: 7, delay: 3 }}
+                   className="absolute top-[60%] left-0 h-[2px] w-[60px] bg-gradient-to-r from-transparent via-cyan-400 to-transparent rotate-[10deg] drop-shadow-[0_0_8px_rgba(34,211,238,0.8)]"
+                 >
+                   <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[4px] h-[4px] bg-white rounded-full blur-[1px]"></div>
+                 </motion.div>
+                 
+                 <motion.div
+                   animate={{ x: ['-20%', '120%'], opacity: [0, 1, 1, 0] }}
+                   transition={{ duration: 8, repeat: Infinity, ease: "linear", repeatDelay: 10, delay: 6 }}
+                   className="absolute top-[80%] left-0 h-[2px] w-[45px] bg-gradient-to-r from-transparent via-white to-transparent rotate-[-5deg] drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]"
+                 >
+                   <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[4px] h-[4px] bg-white rounded-full blur-[1px]"></div>
+                 </motion.div>
+               </div>
             </motion.div>
 
           </div>

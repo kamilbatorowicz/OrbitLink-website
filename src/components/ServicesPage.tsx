@@ -237,10 +237,23 @@ export default function ServicesPage() {
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-blue-400">built for scale</span>
           </h1>
           <div className="w-20 h-[2px] bg-gradient-to-r from-cyan-400 to-blue-500 mx-auto mb-6 shadow-[0_0_10px_rgba(34,211,238,0.5)]" />
-          <p className="text-white/80 md:text-white/60 text-lg md:text-xl font-light leading-relaxed max-w-2xl mx-auto drop-shadow-md mb-12">
+          <p className="text-white/80 md:text-white/60 text-lg md:text-xl font-light leading-relaxed max-w-2xl mx-auto drop-shadow-md mb-12 px-4">
             From broadband for the most remote corners of Earth to enterprise-grade private networks.
             OrbitLink delivers the infrastructure that powers next-generation connectivity.
           </p>
+
+          <div className="flex flex-row items-center justify-center gap-3 w-full px-6 md:px-0">
+            <Link to="/contact" className="flex-1 md:flex-none">
+              <button className="w-full md:w-auto bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-4 md:px-10 py-3.5 md:py-4 rounded-full font-bold text-sm md:text-base hover:shadow-[0_0_20px_rgba(34,211,238,0.4)] transition-all">
+                Contact Sales
+              </button>
+            </Link>
+            <Link to="/missions" className="flex-1 md:flex-none">
+              <button className="w-full md:w-auto px-4 md:px-10 py-3.5 md:py-4 rounded-full font-bold text-sm md:text-base border border-white/20 hover:bg-white/5 transition-all text-white">
+                View Missions
+              </button>
+            </Link>
+          </div>
           
           <motion.div 
             initial={{ opacity: 0 }}
@@ -290,17 +303,18 @@ export default function ServicesPage() {
 
             {/* ── Left: text ── */}
             <div className="flex-1 flex flex-col gap-6 max-w-xl">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-400/10 border border-cyan-400/25 text-[10px] uppercase tracking-widest font-bold text-cyan-400 w-fit">
-                <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
-                Global Coverage Guaranteed
-              </div>
-
-              <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white leading-tight">
-                Connect to anywhere<br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-blue-400">
-                  on Earth, instantly.
+              <div className="flex flex-wrap gap-3 mt-10 md:mt-16 mb-12 md:mb-0 justify-center md:justify-start">
+                <span className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-[11px] md:text-xs font-medium text-white/70 backdrop-blur-md">
+                  <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                  🌍 Global LEO Network
                 </span>
-              </h2>
+                <span className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-[11px] md:text-xs font-medium text-white/70 backdrop-blur-md">
+                  🛰️ 648 Satellites
+                </span>
+                <span className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-[11px] md:text-xs font-medium text-white/70 backdrop-blur-md">
+                  ⚡ &lt;20ms latency
+                </span>
+              </div>
 
               <p className="text-white/50 text-base font-light leading-relaxed">
                 OrbitLink's constellation gives you enterprise-grade satellite connectivity wherever you operate.

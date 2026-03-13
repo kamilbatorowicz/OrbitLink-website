@@ -54,105 +54,125 @@ function TeamSection() {
                 </p>
             </motion.div>
 
-            {/* Accordion cards row — responsive stacking on mobile */}
-            <div className="flex flex-col md:flex-row gap-4 h-auto md:h-[480px] justify-center items-center">
-                {team.map((member, i) => {
-                    const isActive = activeIdx === i;
-                    
-                    return (
-                        <motion.div
-                            key={member.name}
-                            className="relative rounded-3xl overflow-hidden cursor-pointer w-full md:flex-shrink-0"
-                            animate={{
-                                width: typeof window !== 'undefined' && window.innerWidth < 768 ? "100%" : (isActive ? 460 : 240),
-                                height: typeof window !== 'undefined' && window.innerWidth < 768 ? 320 : "100%",
-                            }}
-                            transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
-                            onHoverStart={() => setHovered(i)}
-                            onHoverEnd={() => setHovered(null)}
-                            onClick={() => setSelected(i)}
-                        >
-                            {/* Photo background */}
-                            <img
-                                src={member.photo}
-                                alt={member.name}
-                                className="absolute inset-0 w-full h-full object-cover object-top"
-                            />
+            {/* Carousel / Accordion cards row */}
+            <div className="relative flex flex-col items-center">
+                <div className="flex gap-4 h-auto md:h-[480px] justify-center items-center w-full overflow-hidden md:overflow-visible px-4">
+                    {team.map((member, i) => {
+                        const isActive = activeIdx === i;
+                        const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+                        
+                        // Hide non-active cards on mobile to mimic carousel
+                        if (isMobile && selected !== i) return null;
 
-                            {/* Bottom gradient overlay */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
-
-                            {/* Monogram — visible when collapsed */}
+                        return (
                             <motion.div
-                                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-3xl font-bold pointer-events-none"
-                                style={{ color: member.accent }}
-                                animate={{ opacity: isActive ? 0 : 1, scale: isActive ? 0.8 : 1 }}
-                                transition={{ duration: 0.3 }}
+                                key={member.name}
+                                className="relative rounded-3xl overflow-hidden cursor-pointer w-full md:flex-shrink-0"
+                                drag={isMobile ? "x" : false}
+                                dragConstraints={{ left: 0, right: 0 }}
+                                onDragEnd={(_, info) => {
+                                    if (isMobile) {
+                                        if (info.offset.x < -50) next();
+                                        else if (info.offset.x > 50) prev();
+                                    }
+                                }}
+                                animate={{
+                                    width: isMobile ? "100%" : (isActive ? 460 : 240),
+                                    height: isMobile ? 400 : "100%",
+                                    x: isMobile ? 0 : 0
+                                }}
+                                initial={isMobile ? { opacity: 0, x: 20 } : false}
+                                whileInView={isMobile ? { opacity: 1, x: 0 } : false}
+                                transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
+                                onHoverStart={() => !isMobile && setHovered(i)}
+                                onHoverEnd={() => !isMobile && setHovered(null)}
+                                onClick={() => !isMobile && setSelected(i)}
                             >
-                                {member.initials}
-                            </motion.div>
+                                {/* Photo background */}
+                                <img
+                                    src={member.photo}
+                                    alt={member.name}
+                                    className="absolute inset-0 w-full h-full object-cover object-top pointer-events-none"
+                                />
 
-                            {/* Name + role — revealed on expand */}
-                            <motion.div
-                                className="absolute bottom-7 left-6 right-6 pointer-events-none"
-                                animate={{ opacity: isActive ? 1 : 0, y: isActive ? 0 : 10 }}
-                                transition={{ duration: 0.3, delay: isActive ? 0.15 : 0 }}
-                            >
-                                <div
-                                    className="text-xs font-bold uppercase tracking-widest mb-1.5"
+                                {/* Bottom gradient overlay */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent pointer-events-none" />
+
+                                {/* Monogram — visible when collapsed (desktop only) */}
+                                <motion.div
+                                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-3xl font-bold pointer-events-none hidden md:block"
                                     style={{ color: member.accent }}
+                                    animate={{ opacity: isActive ? 0 : 1, scale: isActive ? 0.8 : 1 }}
+                                    transition={{ duration: 0.3 }}
                                 >
-                                    {member.role}
-                                </div>
-                                <div className="text-white font-semibold text-xl leading-tight">
-                                    {member.name}
-                                </div>
+                                    {member.initials}
+                                </motion.div>
+
+                                {/* Name + role — revealed on expand (or always on mobile) */}
+                                <motion.div
+                                    className="absolute bottom-7 left-6 right-6 pointer-events-none"
+                                    animate={{ 
+                                        opacity: (isActive || isMobile) ? 1 : 0, 
+                                        y: (isActive || isMobile) ? 0 : 10 
+                                    }}
+                                    transition={{ duration: 0.3, delay: (isActive || isMobile) ? 0.15 : 0 }}
+                                >
+                                    <div
+                                        className="text-xs font-bold uppercase tracking-widest mb-1.5"
+                                        style={{ color: member.accent }}
+                                    >
+                                        {member.role}
+                                    </div>
+                                    <div className="text-white font-semibold text-xl leading-tight">
+                                        {member.name}
+                                    </div>
+                                </motion.div>
+
+                                {/* Bottom accent line */}
+                                <div
+                                    className="absolute bottom-0 left-0 right-0 h-[3px] pointer-events-none"
+                                    style={{ background: `linear-gradient(90deg, transparent, ${member.accent}, transparent)` }}
+                                />
                             </motion.div>
-
-                            {/* Bottom accent line */}
-                            <div
-                                className="absolute bottom-0 left-0 right-0 h-[3px]"
-                                style={{ background: `linear-gradient(90deg, transparent, ${member.accent}, transparent)` }}
-                            />
-                        </motion.div>
-                    );
-                })}
-            </div>
-
-            {/* Arrow navigation */}
-            <div className="flex items-center justify-center gap-4 mt-8">
-                <button
-                    onClick={prev}
-                    className="w-11 h-11 rounded-full border border-white/15 flex items-center justify-center text-white/60 hover:text-white hover:border-white/40 hover:bg-white/5 transition-all duration-200"
-                    aria-label="Previous"
-                >
-                    <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6" strokeLinecap="round" strokeLinejoin="round" /></svg>
-                </button>
-
-                {/* Dot indicators */}
-                <div className="flex gap-2">
-                    {team.map((_, i) => (
-                        <button
-                            key={i}
-                            onClick={() => setSelected(i)}
-                            className="transition-all duration-300 rounded-full"
-                            style={{
-                                width: selected === i ? 24 : 8,
-                                height: 8,
-                                background: selected === i ? team[selected].accent : "rgba(255,255,255,0.2)",
-                            }}
-                            aria-label={`Team member ${i + 1}`}
-                        />
-                    ))}
+                        );
+                    })}
                 </div>
 
-                <button
-                    onClick={next}
-                    className="w-11 h-11 rounded-full border border-white/15 flex items-center justify-center text-white/60 hover:text-white hover:border-white/40 hover:bg-white/5 transition-all duration-200"
-                    aria-label="Next"
-                >
-                    <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" strokeLinecap="round" strokeLinejoin="round" /></svg>
-                </button>
+                {/* Arrow navigation — enhanced for mobile */}
+                <div className="flex items-center justify-center gap-6 mt-10 w-full">
+                    <button
+                        onClick={prev}
+                        className="w-12 h-12 rounded-full border border-white/20 bg-white/5 flex items-center justify-center text-white/80 hover:text-white hover:border-white/40 hover:bg-white/10 transition-all duration-200"
+                        aria-label="Previous"
+                    >
+                        <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                    </button>
+
+                    {/* Dot indicators */}
+                    <div className="flex gap-2">
+                        {team.map((_, i) => (
+                            <button
+                                key={i}
+                                onClick={() => setSelected(i)}
+                                className="transition-all duration-300 rounded-full"
+                                style={{
+                                    width: selected === i ? 24 : 8,
+                                    height: 8,
+                                    background: selected === i ? team[selected].accent : "rgba(255,255,255,0.2)",
+                                }}
+                                aria-label={`Team member ${i + 1}`}
+                            />
+                        ))}
+                    </div>
+
+                    <button
+                        onClick={next}
+                        className="w-12 h-12 rounded-full border border-white/20 bg-white/5 flex items-center justify-center text-white/80 hover:text-white hover:border-white/40 hover:bg-white/10 transition-all duration-200"
+                        aria-label="Next"
+                    >
+                        <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                    </button>
+                </div>
             </div>
         </div>
     );
