@@ -6,24 +6,28 @@ export function CobeGlobe() {
 
     useEffect(() => {
         let phi = 0;
+        let width = 0;
+        const onResize = () => canvasRef.current && (width = canvasRef.current.offsetWidth);
+        window.addEventListener('resize', onResize);
+        onResize();
 
         if (!canvasRef.current) return;
 
         const globe = createGlobe(canvasRef.current, {
             devicePixelRatio: 2,
-            width: 1000,
-            height: 1000,
+            width: width * 2,
+            height: width * 2,
             phi: 0,
             theta: 0.3,
-            dark: 1, // Keep space dark
+            dark: 1,
             diffuse: 1.0,
-            mapSamples: 20000, // Zwiększona szczegółowość
-            mapBrightness: 12, // Mocniej świecąca Ziemia
-            baseColor: [0.1, 0.4, 0.8], // Zmiana na "deep tech blue" zamiast szarego
-            markerColor: [0.2, 1, 0.9], // Markery o kolorze cyan/neonowym
-            glowColor: [0.1, 0.3, 0.7], // Mocna, niebieskawa atmosfera
+            mapSamples: 20000,
+            mapBrightness: 12,
+            baseColor: [0.1, 0.4, 0.8],
+            markerColor: [0.2, 1, 0.9],
+            glowColor: [0.1, 0.3, 0.7],
+            opacity: 0.85,
             markers: [
-                // Random locations scattered globally to represent the constellation
                 { location: [37.7595, -122.4367], size: 0.03 },
                 { location: [40.7128, -74.0060], size: 0.1 },
                 { location: [51.5074, -0.1278], size: 0.05 },
@@ -41,15 +45,16 @@ export function CobeGlobe() {
                 { location: [39.9042, 116.4074], size: 0.09 },
             ],
             onRender: (state) => {
-                // Called on every animation frame.
-                // `state` will be an empty object, return updated params.
                 state.phi = phi;
                 phi += 0.003;
+                state.width = width * 2;
+                state.height = width * 2;
             },
         });
 
         return () => {
             globe.destroy();
+            window.removeEventListener('resize', onResize);
         };
     }, []);
 

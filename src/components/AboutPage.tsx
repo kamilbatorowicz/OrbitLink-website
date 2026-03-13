@@ -159,7 +159,7 @@ export default function AboutPage() {
         <div className="min-h-screen bg-black text-white">
 
             {/* Hero Split Section */}
-            <section className="relative pt-40 pb-20 px-6 md:px-16 overflow-hidden">
+            <div className="relative z-10 max-w-[1200px] mx-auto px-6 md:px-12 pt-28 pb-12 md:pt-40 md:pb-16 min-h-[70vh] overflow-hidden">
                 {/* Background glow */}
                 <div className="absolute inset-0 pointer-events-none">
                     <div className="absolute top-0 right-[-5%] w-[45%] h-[70%] bg-cyan-500/8 blur-[160px] rounded-full" />

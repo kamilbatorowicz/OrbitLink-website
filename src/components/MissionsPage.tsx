@@ -25,7 +25,7 @@ export default function MissionsPage() {
             </div>
 
 
-            <div className="relative z-10 max-w-[1200px] mx-auto px-6 md:px-12 pt-40 pb-16 min-h-[70vh]">
+            <div className="relative z-10 max-w-[1200px] mx-auto px-6 md:px-12 pt-28 pb-12 md:pt-40 md:pb-16 min-h-[70vh]">
 
                 {/* Header text */}
                 <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="mb-12">

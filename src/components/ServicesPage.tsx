@@ -207,7 +207,7 @@ export default function ServicesPage() {
         <div className="absolute bottom-[-10%] left-[20%] w-[500px] h-[500px] rounded-full blur-[140px]"
           style={{ background: "radial-gradient(circle, rgba(6,182,212,0.1) 0%, transparent 70%)" }} />
       </div>
-      <section className="relative z-10 px-6 md:px-12 pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden border-b border-white/5 text-center w-full min-h-[70vh] flex flex-col items-center justify-center">
+      <section className="relative z-10 pt-28 pb-16 md:pt-40 md:pb-32 px-6 md:px-16 text-center w-full min-h-[70vh] flex flex-col items-center justify-center overflow-hidden">
         {/* Background Image & Masking */}
         <div className="absolute inset-0 z-[-2]">
           <div className="absolute inset-0 bg-black/30 mix-blend-multiply z-10" />
@@ -265,7 +265,7 @@ export default function ServicesPage() {
         <SatelliteScroller />
       </div>
       {/* ─── CTA ──────────────────────────────────────────────── */}
-      <section className="relative z-10 px-6 md:px-16 py-24">
+      <section className="relative z-10 px-6 md:px-16 py-16 md:py-24">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
